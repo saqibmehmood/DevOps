@@ -23,6 +23,9 @@ jobs:
           pip install -r requirements.txt
           # Any other installation commands you might have
 
+      - name: Install pre-commit
+        run: pip install pre-commit
+
       - name: Setup Pre-commit Hooks
         run: pre-commit install
 

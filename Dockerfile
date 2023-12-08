@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install pre-commit
 
 # Copy the Django project code into container
 COPY . /app/

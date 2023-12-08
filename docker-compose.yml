@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: app
+    ports:
+      - "8000:8000" # Map Django port to host
+    environment:
+      - APP_INSTANCE=app
+
+
+#    volumes:
+#      - /home/tk-lpt-395/Documents/TUTORIAL/CICD/Sample APP/recipe-app-api-devops-starting-code/app/media:/app/media
+
+
+
+

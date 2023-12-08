@@ -141,38 +141,3 @@ MEDIA_ROOT ='/vol/web/media'
 STATIC_ROOT = '/vol/web/static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

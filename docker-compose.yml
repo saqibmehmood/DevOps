@@ -1,31 +1,36 @@
-version: '3'
+name: Django CI
 
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000" # Map Django port to host
-    environment:
-      - APP_INSTANCE=app
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-  nginx:
-    image: nginx:latest
-#    networks:
-#      - myapp_network
-    ports:
-      - "8001:8001"
-#    volumes:
-#      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-#      - /home/tk-lpt-395/certs:/etc/nginx/certs
-    depends_on:
-      - app
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
+    services:
+      nginx:
+        image: nginx:latest
+        ports:
+          - 8001:8001
 
-#    volumes:
-#      - /home/tk-lpt-395/Documents/TUTORIAL/CICD/Sample APP/recipe-app-api-devops-starting-code/app/media:/app/media
+    steps:
+    - uses: actions/checkout@v2
 
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
 
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile
 
+    - name: Run Docker Compose
+      run: docker-compose up -d
 
+    - name: Run migrations
+      run: docker-compose exec app python manage.py migrate
+
+    # Add additional steps for other commands you might want to run (e.g., running tests)

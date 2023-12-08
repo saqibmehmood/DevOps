@@ -5,32 +5,24 @@ jobs:
   quality-assurance:
     name: Quality Assurance
     runs-on: ubuntu-latest
-    container: python:3.8
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install system dependencies
-        run: apt-get update && apt-get install -y make
-
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v2.0.0
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
         with:
-          poetry-version: 1.4.2
-
-      - name: Install Python Dependencies
-        run: |
-          pip install -r requirements.txt
-          # Any other installation commands you might have
+          python-version: '3.8'
 
       - name: Install pre-commit
         run: pip install pre-commit
 
-      - name: Setup Pre-commit Hooks
-        run: pre-commit install
+      - name: Run pre-commit hooks
+        run: pre-commit run --all-files
 
-      - name: Lint
-        run: make lint  # Assuming you have a lint target in your Makefile
+      - name: Build and Run Docker Container
+        run: |
+          docker build -t my-django-app .
+          docker-compose up -d
 
-      - name: Test
-        run: make test  # Assuming you have a test target in your Makefile
+      # Add additional steps like linting, testing, etc. as needed

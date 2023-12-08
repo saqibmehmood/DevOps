@@ -1,16 +1,16 @@
 version: '3.7'
 
 services:
-  db:
-    image: postgres:13
-    environment:
-      POSTGRES_DB: djangoJs
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres123
-#    networks:
-#      - myapp_network
-    ports:
-      - "5433:5432" # Map the PostgreSQL port to host
+#  db:
+#    image: postgres:13
+#    environment:
+#      POSTGRES_DB: djangoJs
+#      POSTGRES_USER: postgres
+#      POSTGRES_PASSWORD: postgres123
+##    networks:
+##      - myapp_network
+#    ports:
+#      - "5433:5432" # Map the PostgreSQL port to host
 #    volumes:
 #      - pgdata:/var/lib/postgresql/data
 
@@ -25,17 +25,11 @@ services:
 #    environment:
 #      - APP_INSTANCE=web1
 
-    depends_on:
-      - db # Ensure the database is ready before starting the Django app
+#    depends_on:
+#      - db # Ensure the database is ready before starting the Django app
 #    volumes:
 #      - /home/tk-lpt-395/PycharmProjects/djangoJS/Blog/Blog/media:/app/media
 
-  proxy:
-    image: proxy:latest
-    depends_on:
-      - app
-    ports:
-      - "8000:8000"
 
 #  nginx:
 #    image: nginx:latest

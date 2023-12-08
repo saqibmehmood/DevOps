@@ -73,28 +73,30 @@ WSGI_APPLICATION = 'app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djangoJs',  # Change to your database name
-        # 'NAME': 'django-learning',  # Change to your database name
-        'USER': 'postgres',  # Change to your database user
-        'PASSWORD': "postgres123",
-        # 'PASSWORD': 'SBacm7VwUf7Fu2ROVfrM',  # Change to your database password
-        'HOST': 'db',  # This is the Docker network hostname for the database container
-        # 'HOST': 'database-1.cbsy9abwsldj.us-east-2.rds.amazonaws.com',  # This is the Docker network hostname for the database container
-        # 'HOST': 'web.docker.internal',  # This is the Docker network hostname for the database container
-        # 'PORT': '5433',  # Default PostgreSQL port
-        'PORT': '5432',  # Default PostgreSQL port
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'djangoJs',  # Change to your database name
+#         # 'NAME': 'django-learning',  # Change to your database name
+#         'USER': 'postgres',  # Change to your database user
+#         'PASSWORD': "postgres123",
+#         # 'PASSWORD': 'SBacm7VwUf7Fu2ROVfrM',  # Change to your database password
+#         'HOST': 'db',  # This is the Docker network hostname for the database container
+#         # 'HOST': 'database-1.cbsy9abwsldj.us-east-2.rds.amazonaws.com',  # This is the Docker network hostname for the database container
+#         # 'HOST': 'web.docker.internal',  # This is the Docker network hostname for the database container
+#         # 'PORT': '5433',  # Default PostgreSQL port
+#         'PORT': '5432',  # Default PostgreSQL port
 #     }
 # }
+
+from pathlib import Path
+# ...
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
+    }
+}
 
 
 # Password validation

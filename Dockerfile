@@ -28,6 +28,7 @@ Expose 8000
 COPY entrypoint.sh /entrypoint.sh
 #CMD ["gunicorn", "Blog.wsgi:application", "--bind", "0.0.0.0:8000"]
 #CMD ["daphne", "-u", "/tmp/daphne.sock", "Blog.asgi:application"]
+RUN chmod +x /entrypoint.sh
 
 #CMD ["daphne", "Blog.asgi:application", "--port", "8000", "--bind", "0.0.0.0"]
 ENTRYPOINT ["/entrypoint.sh"]

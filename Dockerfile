@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.8-slim
+FROM python:3.8
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -10,11 +10,9 @@ WORKDIR /app
 
 # Install system dependencies including build tools
 RUN apt-get update && apt-get install -y \
-    libpq-dev \
     gcc \
-    build-essential    # Add build-essential for compiling C extensions
-
-# Install Python dependencies
+    build-essential \
+    libpq-dev
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 

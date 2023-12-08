@@ -8,11 +8,14 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install system dependencies including build tools
+# Install system dependencies including build tools and git
 RUN apt-get update && apt-get install -y \
     gcc \
     build-essential \
-    libpq-dev
+    libpq-dev \
+    git
+
+# Install Python dependencies
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install pre-commit

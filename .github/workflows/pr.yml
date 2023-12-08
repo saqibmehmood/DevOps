@@ -18,13 +18,16 @@ jobs:
         with:
           poetry-version: 1.4.2
 
-      - name: Install Dependencies
+      - name: Install Python Dependencies
         run: |
-          make install
-          make install-pre-commit
+          pip install -r requirements.txt
+          # Any other installation commands you might have
+
+      - name: Setup Pre-commit Hooks
+        run: pre-commit install
 
       - name: Lint
-        run: make lint
+        run: make lint  # Assuming you have a lint target in your Makefile
 
       - name: Test
-        run: make test
+        run: make test  # Assuming you have a test target in your Makefile

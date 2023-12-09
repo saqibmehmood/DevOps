@@ -47,5 +47,3 @@ services:
 #  myapp_network:
 #    driver: bridge
 #
-
-

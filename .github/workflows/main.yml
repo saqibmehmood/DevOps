@@ -27,5 +27,7 @@ jobs:
        pip install --upgrade pip
        pip install -r requirements.txt
 
-
-   # Add additional steps for testing, building, deploying, etc.
+   # Step 7: Build and Run Docker Container
+   - name: Build and Run Docker Container
+     run: |
+       docker-compose up -d

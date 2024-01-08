@@ -12,7 +12,7 @@ from .serializers import TaskSerializer
 class Testing(APIView):
     def get(self, request):
         try:
-            return Response({"message": "If you see this code the congrats you have implemented CICD and this is the version 2..."}, status=status.HTTP_201_CREATED)
+            return Response({"message": "This is January 8 2024"}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"message": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 

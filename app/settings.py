@@ -94,21 +94,28 @@ WSGI_APPLICATION = 'app.wsgi.application'
 from pathlib import Path
 # ...
 # Retrieve RDS credentials from environment variables
-RDS_DB_NAME = os.environ.get('RDS_DB_NAME')
-RDS_USERNAME = os.environ.get('RDS_USERNAME')
-RDS_PASSWORD = os.environ.get('RDS_PASSWORD')
-RDS_HOSTNAME = os.environ.get('RDS_HOSTNAME')
-RDS_PORT = os.environ.get('RDS_PORT')
+DB_NAME = os.environ.get('DB_NAME')
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
 #
+print("#####################################")
+print("DB_NAME", DB_NAME)
+print("DB_USERNAME")
+print("DB_PASSWORD")
+print("DB_HOST", DB_HOST)
+print("DB_PORT", DB_PORT)
+print("#####################################")
 # # Configure PostgreSQL database settings
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': RDS_DB_NAME,
-        'USER': RDS_USERNAME,
-        'PASSWORD': RDS_PASSWORD,
-        'HOST': RDS_HOSTNAME,
-        'PORT': RDS_PORT,
+        'NAME': DB_NAME,
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
 }
 
@@ -158,6 +165,6 @@ STATIC_ROOT = '/vol/web/static'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 try:
-    from .local_settings import *
+    from .local_settings2 import *
 except:
     pass

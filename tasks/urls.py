@@ -7,4 +7,5 @@ urlpatterns = [
     path('congrats/', congrats, name='congrats'),
     path('add_task/', add_task, name='add_task'),
     path('get_tasks/', get_tasks, name='get_tasks'),
+    path('my_ip/', my_ip, name='my_ip'),
 ]

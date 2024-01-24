@@ -35,3 +35,13 @@ def get_tasks(request):
         tasks = Task.objects.all()
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def my_ip(request):
+    try:
+        # Get the client's IP address from the request object
+        client_ip = request.META.get('REMOTE_ADDR', None)
+        return Response({"message": "This is January 24, 2024", "server_ip": client_ip}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        return Response({"message": f"An error occurred: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
